@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>graphql-config by graphcool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">graphql-config</h1>
+      <h2 class="project-tagline">The easiest way to configure your development environment with your GraphQL schema (supported by most tools, editors &amp; IDEs)</h2>
+      <a href="https://github.com/graphcool/graphql-config" class="btn">View on GitHub</a>
+      <a href="https://github.com/graphcool/graphql-config/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/graphcool/graphql-config/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="graphql-config" class="anchor" href="#graphql-config" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>graphql-config</h1>
+
+<p>The easiest way to configure your development environment with your GraphQL schema (supported by most tools, editors &amp; IDEs)</p>
+
+<p><strong>TLDR</strong>: Set an environment variable called <code>GRAPHQL_ENDPOINT</code> to your GraphQL endpoint (e.g. <code>https://your.api/graphql</code>) or read ahead for other configuration options.</p>
+
+<h2>
+<a id="supported-by" class="anchor" href="#supported-by" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported by...</h2>
+
+<h3>
+<a id="editors" class="anchor" href="#editors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Editors</h3>
+
+<ul>
+<li>
+<a href="https://github.com/jimkyndemeyer/js-graphql-intellij-plugin">js-graphql-intellij-plugin</a> - GraphQL language support for IntelliJ IDEA and WebStorm, including Relay.QL tagged templates in JavaScript and TypeScript (<em>pending</em>)</li>
+<li>
+<a href="https://github.com/rmosolgo/language-graphql">atom-language-graphql</a> - GraphQL support for Atom text editor (<em>pending</em>)</li>
+</ul>
+
+<h3>
+<a id="tools" class="anchor" href="#tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tools</h3>
+
+<ul>
+<li>
+<a href="https://github.com/graphcool/babel-plugin-react-relay">babel-plugin-react-relay</a> - Babel compile step to process your <code>Relay.QL</code> queries</li>
+<li>
+<a href="https://github.com/apollostack/eslint-plugin-graphql">eslint-plugin-graphql</a> - An ESLint plugin that checks tagged template strings against a GraphQL schema (<em>pending</em>)</li>
+</ul>
+
+<blockquote>
+<p>Did we forget a tool/editor? Please <a href="https://github.com/graphcool/graphql-config/compare">add it here</a>.</p>
+</blockquote>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>You can either configure your GraphQL endpoint via a configuration file or by providing an enviornment variable.</p>
+
+<h3>
+<a id="configuration-via-graphql_endpoint-environment-variable" class="anchor" href="#configuration-via-graphql_endpoint-environment-variable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration via <code>$GRAPHQL_ENDPOINT</code> environment variable</h3>
+
+<p>The easiest way to configure your project is by setting an environment variable called <code>GRAPHQL_ENDPOINT</code> to your GraphQL endpoint.</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">export</span> GRAPHQL_ENDPOINT=<span class="pl-s"><span class="pl-pds">"</span>https://your.api/graphql<span class="pl-pds">"</span></span></pre></div>
+
+<h3>
+<a id="configuration-via-graphqlrc-file" class="anchor" href="#configuration-via-graphqlrc-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration via <code>.graphqlrc</code> file</h3>
+
+<p>You can either use your actual GraphQL endpoint or if preferred a local JSON schema file. </p>
+
+<h4>
+<a id="use-graphql-endpoint" class="anchor" href="#use-graphql-endpoint" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use GraphQL endpoint</h4>
+
+<p>Note: The <code>headers</code> object is optional and can for example be used to authenticate to your GraphQL endpoint.</p>
+
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>request<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>https://example.com/graphql<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>headers<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>Authorization<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>xxxxx<span class="pl-pds">"</span></span>
+    }
+  }
+}</pre></div>
+
+<h4>
+<a id="use-local-schema-file-json" class="anchor" href="#use-local-schema-file-json" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use local schema file (JSON)</h4>
+
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>./schema.json<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<h3>
+<a id="configuration-via-packagejson-file" class="anchor" href="#configuration-via-packagejson-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration via <code>package.json</code> file</h3>
+
+<p>Use the same configuration options as for the <code>.graphqlrc</code> file but wrap it into an object with the key <code>graphql</code>.</p>
+
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>dependencies<span class="pl-pds">"</span></span>: { <span class="pl-ii">...</span> },
+  <span class="pl-s"><span class="pl-pds">"</span>request<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>https://example.com/graphql<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+
+<h2>
+<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it works</h2>
+
+<p>This project aims to be provide a unifying configuration file format to configure your GraphQL schema in your development environment.</p>
+
+<p>Additional to the format specification, it provides the <code>graphql-config-parser</code> library, which is used by <a href="#supported-by">all supported tools and editor plugins</a>. The library reads your provided configuration and passes the actual GraphQL schema along to the tool which called it.</p>
+
+<p><img src="resources/how-it-works.png" alt=""></p>
+
+<p>In case you provided a URL to your GraphQL endpoint, the <code>graphql-config-parser</code> library will run an <a href="https://github.com/graphql/graphql-js/blob/master/src/utilities/introspectionQuery.js">introspection query</a> against your endpoint in order to fetch your schema.</p>
+
+<h2>
+<a id="graphql-config-parser-api-" class="anchor" href="#graphql-config-parser-api-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>graphql-config-parser</code> API <a href="https://travis-ci.org/graphcool/graphql-config"><img src="https://travis-ci.org/graphcool/graphql-config.svg?branch=master" alt="Build Status"></a>
+</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">parse</span>, <span class="pl-smi">resolveSchema</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>graphql-config-parser<span class="pl-pds">'</span></span>
+
+<span class="pl-k">const</span> <span class="pl-c1">config</span> <span class="pl-k">=</span> <span class="pl-en">parse</span>()
+<span class="pl-en">resolveSchema</span>(config).<span class="pl-en">then</span>((<span class="pl-smi">schema</span>) <span class="pl-k">=&gt;</span> {
+  <span class="pl-c">// use json schema for your tool/plugin</span>
+})</pre></div>
+
+<h2>
+<a id="help--community-" class="anchor" href="#help--community-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Help &amp; Community <a href="https://slack.graph.cool"><img src="https://slack.graph.cool/badge.svg" alt="Slack Status"></a>
+</h2>
+
+<p>Join our <a href="http://slack.graph.cool/">Slack community</a> if you run into issues or have questions. We love talking to you!</p>
+
+<p><img src="http://i.imgur.com/5RHR6Ku.png" alt=""></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/graphcool/graphql-config">graphql-config</a> is maintained by <a href="https://github.com/graphcool">graphcool</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
